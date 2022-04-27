@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.detail.ImageDetailFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.xemic.lorempicsum.viewmodel.ImageDetailViewModel" />
+
+        <variable
+            name="imageInfo"
+            type="com.xemic.lorempicsum.models.retrofit.Image" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/image_detail_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/image_detail_back_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/transparent"
+                android:onClick="@{() -> viewModel.clickBackBtn()}"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/image_detail_header_bottom_empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="13dp"
+                android:background="@color/transparent"
+                app:layout_constraintTop_toBottomOf="@id/image_detail_back_btn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/image_detail_header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_detail_main_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_default"
+                    app:layout_constraintDimensionRatio="W,1:1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Image Information -->
+                <TextView
+                    android:id="@+id/image_detail_image_info_title"
+                    style="@style/roboto_bold_18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="17dp"
+                    android:text="Image Information"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_main_image" />
+
+                <ImageButton
+                    android:id="@+id/image_detail_like_btn"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@color/transparent"
+                    android:onClick="@{() -> viewModel.clickLikeBtn()}"
+                    android:src="@drawable/ic_star_empty"
+                    app:layout_constraintBottom_toBottomOf="@id/image_detail_image_info_title"
+                    app:layout_constraintRight_toRightOf="@id/image_detail_image_info_title" />
+
+                <TextView
+                    android:id="@+id/image_detail_author_title"
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Author"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_info_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_image_info_title" />
+
+                <TextView
+                    android:id="@+id/image_detail_author"
+                    style="@style/roboto_regular_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@{imageInfo.author}"
+                    app:layout_constraintBottom_toBottomOf="@id/image_detail_author_title"
+                    app:layout_constraintLeft_toRightOf="@id/image_detail_author_title"
+                    tools:text="xemic" />
+
+                <TextView
+                    android:id="@+id/image_detail_width_title"
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="original width"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_info_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_author_title" />
+
+                <TextView
+                    android:id="@+id/image_detail_width"
+                    style="@style/roboto_regular_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text='@{imageInfo.width+" px"}'
+                    app:layout_constraintBottom_toBottomOf="@id/image_detail_width_title"
+                    app:layout_constraintLeft_toRightOf="@id/image_detail_width_title"
+                    tools:text="1024 px" />
+
+                <TextView
+                    android:id="@+id/image_detail_height_title"
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="original height"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_info_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_width_title" />
+
+                <TextView
+                    android:id="@+id/image_detail_height"
+                    style="@style/roboto_regular_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text='@{imageInfo.height+" px"}'
+                    app:layout_constraintBottom_toBottomOf="@id/image_detail_height_title"
+                    app:layout_constraintLeft_toRightOf="@id/image_detail_height_title"
+                    tools:text="512 px" />
+
+                <View
+                    android:id="@+id/image_detail_split_line_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/gray_light"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_height_title" />
+
+                <!-- Image Processing -->
+                <TextView
+                    android:id="@+id/image_detail_image_proc_title"
+                    style="@style/roboto_bold_18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Image Processing"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_info_title"
+                    app:layout_constraintRight_toRightOf="@id/image_detail_image_info_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_split_line_1" />
+
+                <TextView
+                    android:id="@+id/image_detail_grayscale_title"
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    android:text="GrayScale"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_proc_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_image_proc_title" />
+
+                <com.xemic.lorempicsum.common.custom.TwoChoiceButton
+                    android:id="@+id/image_detail_grayscale"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_proc_title"
+                    app:layout_constraintRight_toRightOf="@id/image_detail_image_proc_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_image_proc_title"
+                    app:leftButtonBackgroundTint="@color/white"
+                    app:leftButtonSelectedBackgroundTint="@color/green"
+                    app:leftButtonSelectedTextColor="@color/white"
+                    app:leftButtonText="Colored"
+                    app:leftButtonTextColor="@color/gray_light"
+                    app:rightButtonBackgroundTint="@color/white"
+                    app:rightButtonSelectedBackgroundTint="@color/gray"
+                    app:rightButtonSelectedTextColor="@color/white"
+                    app:rightButtonText="Grayscale"
+                    app:rightButtonTextColor="@color/gray_light" />
+
+                <TextView
+                    android:id="@+id/image_detail_blur_title"
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="21dp"
+                    android:text="Blur"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_proc_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_grayscale" />
+
+                <SeekBar
+                    android:id="@+id/image_detail_blur_seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:max="10"
+                    android:progress="0"
+                    android:progressBackgroundTint="@color/gray_light"
+                    android:progressTint="@color/green"
+                    android:thumb="@drawable/seekbar_thumb"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_blur_title" />
+
+                <TextView
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="0"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_blur_seek_bar"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_blur_seek_bar" />
+
+                <TextView
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="5"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_blur_seek_bar"
+                    app:layout_constraintRight_toRightOf="@id/image_detail_blur_seek_bar"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_blur_seek_bar" />
+
+                <TextView
+                    style="@style/roboto_bold_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:text="10"
+                    app:layout_constraintRight_toRightOf="@id/image_detail_blur_seek_bar"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_blur_seek_bar" />
+
+                <Button
+                    android:id="@+id/image_detail_download_btn"
+                    style="@style/roboto_bold_18"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/layout_rounded_10"
+                    android:backgroundTint="@color/green"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="Image Download"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toLeftOf="@id/image_detail_image_proc_title"
+                    app:layout_constraintRight_toRightOf="@id/image_detail_image_proc_title"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_blur_seek_bar" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:text="text"
+                    app:layout_constraintTop_toBottomOf="@id/image_detail_download_btn" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

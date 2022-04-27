@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tcb_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/tcb_left"
+        style="@style/roboto_bold_18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_stroke_1"
+        tools:backgroundTint="@color/green"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        tools:text="Colored"
+        android:textAllCaps="false"
+        tools:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/tcb_right"
+        style="@style/roboto_bold_18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_stroke_1"
+        tools:backgroundTint="@color/white"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        tools:text="GrayScale"
+        android:textAllCaps="false"
+        tools:textColor="@color/gray_light"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

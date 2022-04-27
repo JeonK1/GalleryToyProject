@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TwoChoiceButton">
+        <attr name="leftButtonText" format="string"/>
+        <attr name="rightButtonText" format="string"/>
+
+        <attr name="leftButtonSelectedBackgroundTint" format="color"/>
+        <attr name="leftButtonSelectedTextColor" format="color"/>
+        <attr name="rightButtonSelectedBackgroundTint" format="color"/>
+        <attr name="rightButtonSelectedTextColor" format="color"/>
+
+        <attr name="leftButtonBackgroundTint" format="color"/>
+        <attr name="leftButtonTextColor" format="color"/>
+        <attr name="rightButtonBackgroundTint" format="color"/>
+        <attr name="rightButtonTextColor" format="color"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.main.MainFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.xemic.lorempicsum.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/main_header_lorem"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="17dp"
+                android:src="@drawable/ic_lorem"
+                app:layout_constraintBottom_toBottomOf="@id/main_header_page"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/main_header_title"
+                style="@style/roboto_bold_30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:text="@string/application_title_name"
+                app:layout_constraintBottom_toBottomOf="@id/main_header_page"
+                app:layout_constraintLeft_toRightOf="@id/main_header_lorem" />
+
+            <TextView
+                android:id="@+id/main_header_page"
+                style="@style/roboto_regular_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="page "
+                app:layout_constraintRight_toLeftOf="@id/main_header_current_page"
+                app:layout_constraintTop_toBottomOf="@id/main_like_btn" />
+
+            <TextView
+                android:id="@+id/main_header_current_page"
+                style="@style/roboto_regular_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/main_header_page"
+                app:layout_constraintRight_toLeftOf="@id/main_header_page_slash"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/main_header_page_slash"
+                style="@style/roboto_regular_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" / "
+                app:layout_constraintBottom_toBottomOf="@id/main_header_page"
+                app:layout_constraintRight_toLeftOf="@id/main_header_total_page" />
+
+            <TextView
+                android:id="@+id/main_header_total_page"
+                style="@style/roboto_regular_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="11dp"
+                app:layout_constraintBottom_toBottomOf="@id/main_header_page"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="203" />
+
+            <ImageButton
+                android:id="@+id/main_like_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginRight="17dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_star_empty"
+                android:onClick="@{() -> viewModel.clickLikeBtn()}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/main_header_bottom_empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="13dp"
+                android:background="@color/transparent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_header_page" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/main_viewpager2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_header" />
+
+        <TextView
+            android:id="@+id/main_no_liked_image"
+            style="@style/roboto_bold_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="즐겨찾기 한 이미지가\n존재하지 않습니다"
+            android:textColor="@color/gray_light"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_header"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
