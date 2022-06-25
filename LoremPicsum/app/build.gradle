@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
 
     defaultConfig {
         applicationId "com.xemic.lorempicsum"
         minSdkVersion 28
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -79,4 +79,7 @@ dependencies {
 
     // WorkManager
     implementation "androidx.work:work-runtime-ktx:2.6.0"
+
+    // SplashScreen
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
 }
