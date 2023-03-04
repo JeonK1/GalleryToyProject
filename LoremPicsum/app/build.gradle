@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
+    id 'org.sonarqube'
 }
 
 android {
@@ -39,6 +40,20 @@ android {
     }
     viewBinding {
         enabled = true
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "http://localhost:9000/"
+        property "sonar.login", "sqp_0f55b429465eea51ade536e9e5786234ccfef9f8"        // 로그인 id 또는 인증토큰
+//        property "sonar.password", "X3m!cforstudy"    // 인증토큰 사용시는 공백으로
+        property "sonar.projectKey", "gallery-toy-project"
+        property "sonar.projectName", "gallery toy project"
+        property "sonar.projectVersion", "1.0"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.sources", "src/main/java"
+        property "sonar.profile", "Sonar way"
     }
 }
 
